@@ -131,7 +131,7 @@ UniteDefi Wallet:
 
 ### Chain-Specific Integrations
 
-**EVM Chains**: Standard Web3 integration with ethers.js
+**EVM Chains**: Standard Web3 integration with viem
 **Sui/Aptos**: Move language smart contracts with native SDKs
 **Stellar**: Native payment protocol with built-in atomic swaps
 **TON**: TON SDK with custom smart contract integration

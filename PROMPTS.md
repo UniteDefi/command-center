@@ -118,7 +118,7 @@ TASKS:
    - Add logic to prevent secret exposure compromising remaining fills
 
 TECHNICAL DETAILS:
-- Use ethers.js for EVM interactions
+- Use viem for EVM interactions
 - Implement retry logic for failed transactions
 - Add proper error handling with detailed logging
 - Create interfaces for easy mocking in tests
@@ -492,7 +492,7 @@ SETUP TASKS:
    ```bash
    mkdir unite-defi-sdk && cd unite-defi-sdk
    npm init -y
-   npm install typescript @types/node ethers @aptos-labs/ts-sdk stellar-sdk
+   npm install typescript @types/node viem @aptos-labs/ts-sdk stellar-sdk
    npm install -D @types/jest jest ts-jest
    ```
 
