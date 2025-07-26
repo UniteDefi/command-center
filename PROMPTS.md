@@ -16,10 +16,8 @@ Copy-paste these prompts to each Claude Code session. Each session works on a sp
 You are building the core protocol for UniteDefi, a cross-chain swap platform using 1inch Fusion+ dutch auction model. This is a hackathon sprint with 8 days to build a production-ready demo.
 
 SETUP TASKS:
-1. Fork the 1inch cross-chain resolver: https://github.com/1inch/cross-chain-resolver-example
-2. Rename to unite-defi-protocol
-3. Update package.json to @unite-defi/protocol
-4. Setup the following structure:
+I have cloned a quick start repo example for cross chain resolver provided by 1inch. It only consists of contracts for crosschain resolvers and tests to make sure it works. Push this code to a new branch called template.
+Setup the following structure in the main branch:
 ```
 
 src/
@@ -33,24 +31,17 @@ src/
 
 IMMEDIATE GOALS:
 - Basic dutch auction with linear price decrease
-- Support for 4 EVM chains: Ethereum, Polygon, BSC, Arbitrum
+- Support for 4 EVM chains: Ethereum, Polygon, Base, Arbitrum
 - Simple resolver that can participate in auctions
 - Safety deposits with minimal amounts (0.01 ETH equivalent)
 
 TECHNICAL REQUIREMENTS:
 - TypeScript with strict mode
-- Small commits every 30-45 minutes
+- Make frequent commits and push to github for every small feature you make as you build.
 - Focus on getting basic functionality working first
 - Use existing 1inch contracts as foundation but customize for our needs
 
-COMMIT STRATEGY:
-- "init: fork 1inch resolver as unite-defi-protocol"
-- "feat: enhanced project structure for multi-chain"
-- "feat: base chain abstraction layer"
-- "feat: basic dutch auction price curve logic"
-- Continue with small, descriptive commits
-
-Start with forking the repository and setting up the basic structure. Make your first commit, then ask me what to work on next.
+Once you have the contracts ready, test them using foundry, guide is present in the README on how to do it. Test and make sure everything works for forks of Ethereum, Polygon, Base, Arbitrum.
 ```
 
 ### Phase 1 - Day 1 Afternoon Prompt
@@ -69,13 +60,13 @@ TASKS:
 
 2. Enhance HTLC contracts in contracts/:
    - Modify EscrowSrc/EscrowDst for multi-chain support
-   - Add safety deposit mechanisms (0.01 ETH equivalent)
+   - Add safety deposit mechanisms (0.001 ETH equivalent)
    - Add partial fill support using Merkle trees
 
 3. Add EVM chain configurations:
    - src/chains/ethereum.ts - Ethereum mainnet config
    - src/chains/polygon.ts - Polygon with gas optimizations
-   - src/chains/bsc.ts - BSC configuration
+   - src/chains/Base.ts - Base configuration
    - src/chains/arbitrum.ts - Arbitrum L2 configuration
 
 Each chain should extend a base class with:
@@ -83,14 +74,6 @@ Each chain should extend a base class with:
 - Gas estimation methods
 - Transaction signing logic
 - Contract deployment addresses
-
-COMMIT PATTERN:
-- "feat: basic dutch auction price curve logic"
-- "feat: enhanced HTLC contracts for multi-chain"
-- "feat: Ethereum and Polygon chain support"
-- "feat: BSC and Arbitrum chain support"
-
-Make sure each commit is focused on one specific feature. Test locally that auction price calculation works correctly.
 ```
 
 ### Phase 1 - Day 2 Morning Prompt
@@ -101,13 +84,13 @@ Continue UniteDefi protocol development. Focus on resolver implementation and cr
 CURRENT FOCUS: Resolver Service Implementation
 
 TASKS:
-1. Create src/resolvers/basicResolver.ts:
+1. Create Basic resolver:
    - Participate in dutch auctions by monitoring price decreases
    - Calculate profit margins (must be >1% to participate)
    - Handle auction bidding logic
    - Manage safety deposits across chains
 
-2. Implement cross-chain transaction coordination in src/services/:
+2. Implement cross-chain transaction coordination:
    - crossChainCoordinator.ts - Manages escrow deployment across chains
    - secretManager.ts - Handles secret generation and sharing for HTLC
    - transactionTracker.ts - Tracks transaction status across all chains
@@ -123,10 +106,6 @@ TECHNICAL DETAILS:
 - Add proper error handling with detailed logging
 - Create interfaces for easy mocking in tests
 
-COMMIT PATTERN:
-- "feat: basic resolver with auction participation"
-- "feat: cross-chain transaction coordination"
-- "feat: partial fill support with Merkle proofs"
 
 Focus on getting the resolver to successfully participate in a basic auction first, then add complexity.
 ```
@@ -214,7 +193,7 @@ SETUP TASKS:
 
 IMMEDIATE GOALS:
 
-- Web3 integration with 4 EVM chains (Ethereum, Polygon, BSC, Arbitrum)
+- Web3 integration with 4 EVM chains (Ethereum, Polygon, Base, Arbitrum)
 - Token selector with search functionality
 - Chain selector with network switching
 - Basic swap card layout
